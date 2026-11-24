@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" style="background:#ffffff; font-family:'Inter', system-ui, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="arrow-power" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+    <linearGradient id="grad-mcu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="grad-power" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+    <linearGradient id="grad-sensor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="grad-motor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a3412"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title & Frame -->
+  <rect x="15" y="15" width="970" height="620" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="500" y="50" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a" letter-spacing="-0.5">COMPLETE SYSTEM BLOCK DIAGRAM</text>
+  <text x="500" y="72" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">AUTONOMOUS OBSTACLE AVOIDING AND LINE FOLLOWING SMART CAR</text>
+
+  <!-- 1. POWER SUBSYSTEM -->
+  <g transform="translate(40, 110)">
+    <rect width="200" height="150" rx="10" fill="#ffffff" stroke="#fecaca" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="200" height="34" rx="10" fill="url(#grad-power)"/>
+    <rect y="24" width="200" height="10" fill="url(#grad-power)"/>
+    <text x="100" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">POWER SUBSYSTEM</text>
+    
+    <text x="15" y="60" font-size="12" font-weight="600" fill="#0f172a">2x 18650 Li-ion Cells</text>
+    <text x="15" y="78" font-size="11" fill="#64748b">7.4V Nominal (8.4V Peak)</text>
+    
+    <line x1="15" y1="90" x2="185" y2="90" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="15" y="110" font-size="11" font-weight="600" fill="#b91c1c">SPST Master Switch</text>
+    <text x="15" y="128" font-size="10" fill="#64748b">Direct 7.4V to L298N VMS</text>
+    <text x="15" y="142" font-size="10" fill="#64748b">Regulated 5V to Arduino &amp; Sensors</text>
+  </g>
+
+  <!-- 2. SENSORY & TELEMETRY INPUTS -->
+  <!-- Ultrasonic -->
+  <g transform="translate(40, 280)">
+    <rect width="200" height="95" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="200" height="28" rx="8" fill="url(#grad-sensor)"/>
+    <rect y="20" width="200" height="8" fill="url(#grad-sensor)"/>
+    <text x="100" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">HC-SR04 ULTRASONIC</text>
+    <text x="15" y="50" font-size="11" font-weight="600" fill="#0f172a">Obstacle Range Detector</text>
+    <text x="15" y="66" font-size="10" fill="#64748b">Trig: A0 (Pulse) | Echo: A1 (ToF)</text>
+    <text x="15" y="82" font-size="10" fill="#059669">Acoustic 40kHz (2cm - 400cm)</text>
+  </g>
+
+  <!-- IR Line Sensors -->
+  <g transform="translate(40, 395)">
+    <rect width="200" height="95" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="200" height="28" rx="8" fill="url(#grad-sensor)"/>
+    <rect y="20" width="200" height="8" fill="url(#grad-sensor)"/>
+    <text x="100" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">DUAL IR SENSORS (TCRT5000)</text>
+    <text x="15" y="50" font-size="11" font-weight="600" fill="#0f172a">Optical Track Tracking</text>
+    <text x="15" y="66" font-size="10" fill="#64748b">Left IR: A2 | Right IR: A3</text>
+    <text x="15" y="82" font-size="10" fill="#059669">Infrared Reflectance Comparator</text>
+  </g>
+
+  <!-- Bluetooth Module -->
+  <g transform="translate(40, 510)">
+    <rect width="200" height="95" rx="8" fill="#ffffff" stroke="#bae6fd" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="200" height="28" rx="8" fill="linear-gradient(135deg, #0284c7, #0ea5e9)"/>
+    <rect y="20" width="200" height="8" fill="linear-gradient(135deg, #0284c7, #0ea5e9)"/>
+    <text x="100" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">HC-05 BLUETOOTH MODULE</text>
+    <text x="15" y="50" font-size="11" font-weight="600" fill="#0f172a">Wireless Serial Telemetry</text>
+    <text x="15" y="66" font-size="10" fill="#64748b">TX: Pin 2 (RX) | RX: Pin 3 (TX)</text>
+    <text x="15" y="82" font-size="10" fill="#0284c7">2.4GHz ISM Band (9600 Baud)</text>
+  </g>
+
+  <!-- 3. CENTRAL PROCESSING UNIT: ARDUINO UNO -->
+  <g transform="translate(360, 180)">
+    <rect width="280" height="370" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2.5" filter="url(#shadow)"/>
+    <rect width="280" height="42" rx="12" fill="url(#grad-mcu)"/>
+    <rect y="32" width="280" height="10" fill="url(#grad-mcu)"/>
+    <text x="140" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">ARDUINO UNO (ATmega328P)</text>
+    
+    <!-- MCU Inner Block -->
+    <rect x="25" y="58" width="230" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="140" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#1e3a8a">MAIN PROCESSING CORE</text>
+    <text x="140" y="98" text-anchor="middle" font-size="10" fill="#64748b">16 MHz Clock | 32 KB Flash | 2 KB SRAM</text>
+
+    <!-- Firmware Logic Blocks -->
+    <rect x="25" y="130" width="230" height="42" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="140" y="148" text-anchor="middle" font-size="11" font-weight="600" fill="#1d4ed8">Mode 1: Line Following Logic</text>
+    <text x="140" y="163" text-anchor="middle" font-size="9" fill="#64748b">Differential Steering Algorithm (A2, A3)</text>
+
+    <rect x="25" y="180" width="230" height="42" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="140" y="198" text-anchor="middle" font-size="11" font-weight="600" fill="#047857">Mode 2: Obstacle Avoidance</text>
+    <text x="140" y="213" text-anchor="middle" font-size="9" fill="#64748b">Range Threshold Evaluation (&lt; 20 cm)</text>
+
+    <rect x="25" y="230" width="230" height="42" rx="6" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="140" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#0369a1">Mode 3: Bluetooth Remote Control</text>
+    <text x="140" y="263" text-anchor="middle" font-size="9" fill="#64748b">UART Command Parser ('F','B','L','R','S')</text>
+
+    <rect x="25" y="280" width="230" height="70" rx="6" fill="#fef3c7" stroke="#fde68a"/>
+    <text x="140" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#b45309">PWM &amp; DIRECTION CONTROLLER</text>
+    <text x="140" y="318" text-anchor="middle" font-size="9.5" fill="#78350f">Speed PWM: ENA (D5), ENB (D10)</text>
+    <text x="140" y="335" text-anchor="middle" font-size="9.5" fill="#78350f">Direction Logic: IN1-IN4 (D6, D7, D8, D9)</text>
+  </g>
+
+  <!-- 4. ACTUATION: L298N MOTOR DRIVER -->
+  <g transform="translate(730, 210)">
+    <rect width="230" height="190" rx="10" fill="#ffffff" stroke="#fed7aa" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="230" height="34" rx="10" fill="url(#grad-motor)"/>
+    <rect y="24" width="230" height="10" fill="url(#grad-motor)"/>
+    <text x="115" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">L298N DUAL H-BRIDGE</text>
+
+    <text x="15" y="58" font-size="11" font-weight="600" fill="#0f172a">Power Stages</text>
+    <text x="15" y="74" font-size="10" fill="#64748b">VMS (+7.4V) | 5V Logic Out | GND</text>
+
+    <rect x="15" y="85" width="200" height="40" rx="5" fill="#fff7ed" stroke="#ffedd5"/>
+    <text x="115" y="102" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Channel A: OUT1 &amp; OUT2</text>
+    <text x="115" y="117" text-anchor="middle" font-size="9" fill="#9a3412">Drives 2x Left DC Motors</text>
+
+    <rect x="15" y="135" width="200" height="40" rx="5" fill="#fff7ed" stroke="#ffedd5"/>
+    <text x="115" y="152" text-anchor="middle" font-size="10.5" font-weight="600" fill="#c2410c">Channel B: OUT3 &amp; OUT4</text>
+    <text x="115" y="167" text-anchor="middle" font-size="9" fill="#9a3412">Drives 2x Right DC Motors</text>
+  </g>
+
+  <!-- 5. FINAL ACTUATORS: 4x DC MOTORS -->
+  <g transform="translate(730, 440)">
+    <rect width="230" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+    <rect width="230" height="30" rx="10" fill="#334155"/>
+    <rect y="20" width="230" height="10" fill="#334155"/>
+    <text x="115" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">FOUR DC GEAR MOTORS</text>
+
+    <g transform="translate(15, 42)">
+      <!-- Left side motors -->
+      <rect x="0" y="0" width="95" height="42" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="47" y="17" text-anchor="middle" font-size="9" font-weight="600" fill="#0f172a">Front-Left M1</text>
+      <text x="47" y="32" text-anchor="middle" font-size="8.5" fill="#64748b">Rear-Left M2</text>
+
+      <!-- Right side motors -->
+      <rect x="105" y="0" width="95" height="42" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="152" y="17" text-anchor="middle" font-size="9" font-weight="600" fill="#0f172a">Front-Right M3</text>
+      <text x="152" y="32" text-anchor="middle" font-size="8.5" fill="#64748b">Rear-Right M4</text>
+    </g>
+
+    <text x="115" y="112" text-anchor="middle" font-size="10" font-weight="600" fill="#0f172a">4-Wheel Drive Skid Steering</text>
+    <text x="115" y="128" text-anchor="middle" font-size="9" fill="#64748b">1:48 Gear Ratio | High Traction Rubber Wheels</text>
+  </g>
+
+  <!-- SIGNAL BUSES & ARROWS -->
+  <!-- Power Lines (Red) -->
+  <path d="M 240,160 L 730,160 L 730,225" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6,3" marker-end="url(#arrow-power)"/>
+  <path d="M 240,185 L 360,205" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow-power)"/>
+  <text x="300" y="152" font-size="10" font-weight="600" fill="#dc2626">7.4V Motor Power Rail</text>
+  <text x="270" y="200" font-size="9" fill="#dc2626">5V Logic</text>
+
+  <!-- Sensor Inputs to Arduino (Green/Cyan) -->
+  <path d="M 240,325 L 360,325" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="260" y="318" font-size="9.5" font-weight="600" fill="#059669">Trig/Echo (A0, A1)</text>
+
+  <path d="M 240,442 L 360,410" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="260" y="420" font-size="9.5" font-weight="600" fill="#059669">IR Digital (A2, A3)</text>
+
+  <path d="M 240,555 L 360,490" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="255" y="530" font-size="9.5" font-weight="600" fill="#0284c7">UART Rx/Tx (D2, D3)</text>
+
+  <!-- Arduino to L298N (PWM & Direction Control) -->
+  <path d="M 640,330 L 730,330" fill="none" stroke="#ea580c" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="648" y="320" font-size="10" font-weight="600" fill="#ea580c">PWM Speed: D5, D10</text>
+  <text x="648" y="348" font-size="9" fill="#78350f">DIR Logic: D6-D9</text>
+
+  <!-- L298N to Motors -->
+  <path d="M 845,400 L 845,440" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="855" y="425" font-size="9.5" font-weight="600" fill="#1e40af">High Current Motor Drive (OUT1-OUT4)</text>
+
+  <!-- System Legend -->
+  <g transform="translate(370, 580)">
+    <rect width="260" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <circle cx="20" cy="16" r="5" fill="#dc2626"/>
+    <text x="32" y="20" font-size="9" fill="#334155">Power (7.4V/5V)</text>
+    <circle cx="105" cy="16" r="5" fill="#059669"/>
+    <text x="117" y="20" font-size="9" fill="#334155">Sensory Input</text>
+    <circle cx="185" cy="16" r="5" fill="#ea580c"/>
+    <text x="197" y="20" font-size="9" fill="#334155">Motor Control</text>
+  </g>
+</svg>

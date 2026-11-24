@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" width="100%" height="100%" style="background:#ffffff; font-family:'Inter', system-ui, sans-serif;">
+  <defs>
+    <filter id="shd7" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.1"/>
+    </filter>
+    <marker id="circ-dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+      <circle cx="5" cy="5" r="4" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <!-- Frame -->
+  <rect x="15" y="15" width="1070" height="720" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="550" y="48" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">MASTER SYSTEM ELECTRICAL CIRCUIT SCHEMATIC</text>
+  <text x="550" y="72" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">COMPLETE INTERCONNECTION OF ARDUINO UNO, L298N, SENSORS, HC-05 &amp; 4 MOTORS</text>
+
+  <!-- 1. POWER SUPPLY & BATTERY (Top-Left) -->
+  <g transform="translate(40, 100)">
+    <rect width="220" height="150" rx="10" fill="#ffffff" stroke="#fecaca" stroke-width="2" filter="url(#shd7)"/>
+    <rect width="220" height="30" rx="10" fill="#dc2626"/>
+    <text x="110" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">POWER SOURCE (7.4V)</text>
+    
+    <!-- 2x 18650 Battery Cells -->
+    <rect x="25" y="45" width="75" height="35" rx="4" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="62" y="66" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">Cell 1 (3.7V)</text>
+    
+    <rect x="115" y="45" width="75" height="35" rx="4" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="152" y="66" text-anchor="middle" font-size="9" font-weight="700" fill="#dc2626">Cell 2 (3.7V)</text>
+
+    <!-- SPST Switch -->
+    <circle cx="50" cy="115" r="5" fill="#0f172a"/>
+    <line x1="50" y1="115" x2="80" y2="105" stroke="#0f172a" stroke-width="2.5"/>
+    <circle cx="85" cy="115" r="5" fill="#0f172a"/>
+    <text x="135" y="119" font-size="10" font-weight="700" fill="#0f172a">SPST Power Switch</text>
+
+    <text x="110" y="140" text-anchor="middle" font-size="9" fill="#64748b">Series: 7.4V Nominal (8.4V Max)</text>
+  </g>
+
+  <!-- 2. L298N MOTOR DRIVER (Top-Center) -->
+  <g transform="translate(320, 100)">
+    <rect width="440" height="210" rx="12" fill="#ffffff" stroke="#fed7aa" stroke-width="2" filter="url(#shd7)"/>
+    <rect width="440" height="34" rx="12" fill="#ea580c"/>
+    <text x="220" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">L298N DUAL H-BRIDGE MOTOR DRIVER</text>
+
+    <!-- Left Screw Terminal: OUT1/OUT2 -->
+    <rect x="15" y="55" width="60" height="50" rx="4" fill="#15803d"/>
+    <text x="45" y="76" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">OUT1</text>
+    <text x="45" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">OUT2</text>
+
+    <!-- Right Screw Terminal: OUT3/OUT4 -->
+    <rect x="365" y="55" width="60" height="50" rx="4" fill="#15803d"/>
+    <text x="395" y="76" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">OUT3</text>
+    <text x="395" y="94" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">OUT4</text>
+
+    <!-- Center Heatsink IC -->
+    <rect x="150" y="48" width="140" height="60" rx="4" fill="#1e293b"/>
+    <text x="220" y="82" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">L298N DUAL H-BRIDGE</text>
+
+    <!-- Power In Terminals -->
+    <rect x="15" y="145" width="120" height="40" rx="4" fill="#15803d"/>
+    <text x="35" y="169" font-size="8" font-weight="700" fill="#fef08a">12V (VMS)</text>
+    <text x="75" y="169" font-size="8" font-weight="700" fill="#fef08a">GND</text>
+    <text x="105" y="169" font-size="8" font-weight="700" fill="#fef08a">5V</text>
+
+    <!-- Logic Header: ENA, IN1-IN4, ENB -->
+    <rect x="160" y="150" width="265" height="35" rx="4" fill="#0f172a"/>
+    <g font-size="8.5" font-family="'JetBrains Mono', monospace" font-weight="700" fill="#fde047" text-anchor="middle">
+      <text x="180" y="172">ENA</text>
+      <text x="220" y="172">IN1</text>
+      <text x="260" y="172">IN2</text>
+      <text x="300" y="172">IN3</text>
+      <text x="340" y="172">IN4</text>
+      <text x="385" y="172">ENB</text>
+    </g>
+  </g>
+
+  <!-- 3. MOTORS: LEFT & RIGHT PAIRS -->
+  <!-- Left Motors (Top Left Far) -->
+  <g transform="translate(40, 275)">
+    <rect width="220" height="110" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shd7)"/>
+    <rect width="220" height="24" rx="8" fill="#334155"/>
+    <text x="110" y="17" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">LEFT MOTORS (M1 &amp; M2)</text>
+    <text x="20" y="55" font-size="10" font-weight="600" fill="#0f172a">Front-Left BO Motor</text>
+    <text x="20" y="75" font-size="10" font-weight="600" fill="#0f172a">Rear-Left BO Motor</text>
+    <text x="110" y="98" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">Parallel to OUT1 (+) &amp; OUT2 (-)</text>
+  </g>
+
+  <!-- Right Motors (Top Right Far) -->
+  <g transform="translate(820, 100)">
+    <rect width="240" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shd7)"/>
+    <rect width="240" height="26" rx="8" fill="#334155"/>
+    <text x="120" y="18" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">RIGHT MOTORS (M3 &amp; M4)</text>
+    <text x="20" y="58" font-size="10" font-weight="600" fill="#0f172a">Front-Right BO Motor</text>
+    <text x="20" y="80" font-size="10" font-weight="600" fill="#0f172a">Rear-Right BO Motor</text>
+    <text x="120" y="108" text-anchor="middle" font-size="9" font-weight="600" fill="#2563eb">Parallel to OUT3 (+) &amp; OUT4 (-)</text>
+    <text x="120" y="130" text-anchor="middle" font-size="8.5" fill="#64748b">Skid-Steer Differential Drive</text>
+  </g>
+
+  <!-- 4. ARDUINO UNO (Center-Bottom) -->
+  <g transform="translate(320, 370)">
+    <rect width="440" height="330" rx="12" fill="#ffffff" stroke="#0891b2" stroke-width="2.5" filter="url(#shd7)"/>
+    <rect width="440" height="34" rx="12" fill="#0891b2"/>
+    <text x="220" y="22" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ARDUINO UNO MICROCONTROLLER (ATmega328P)</text>
+
+    <!-- Top Digital Pins Header -->
+    <rect x="20" y="48" width="400" height="34" rx="4" fill="#0f172a"/>
+    <g font-size="8" font-family="'JetBrains Mono', monospace" font-weight="700" fill="#ffffff" text-anchor="middle">
+      <text x="40" y="70">D2(BT)</text>
+      <text x="80" y="70">D3(BT)</text>
+      <text x="130" y="70">D5(ENA)</text>
+      <text x="175" y="70">D6(IN1)</text>
+      <text x="220" y="70">D7(IN2)</text>
+      <text x="265" y="70">D8(IN3)</text>
+      <text x="310" y="70">D9(IN4)</text>
+      <text x="360" y="70">D10(ENB)</text>
+    </g>
+
+    <!-- Center Microcontroller Core -->
+    <rect x="130" y="105" width="180" height="95" rx="6" fill="#1e293b"/>
+    <text x="220" y="145" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">ATmega328P MCU</text>
+    <text x="220" y="165" text-anchor="middle" font-size="9" fill="#38bdf8">16 MHz System Clock</text>
+    <text x="220" y="182" text-anchor="middle" font-size="8.5" fill="#94a3b8">PWM Timers &amp; ADC Registers</text>
+
+    <!-- Bottom Analog & Power Header -->
+    <rect x="20" y="225" width="400" height="34" rx="4" fill="#0f172a"/>
+    <g font-size="8.5" font-family="'JetBrains Mono', monospace" font-weight="700" fill="#ffffff" text-anchor="middle">
+      <text x="50" y="246" fill="#fecaca">5V</text>
+      <text x="90" y="246" fill="#cbd5e1">GND</text>
+      <text x="160" y="246" fill="#fef08a">A0(TRIG)</text>
+      <text x="225" y="246" fill="#bfdbfe">A1(ECHO)</text>
+      <text x="295" y="246" fill="#a7f3d0">A2(IR-L)</text>
+      <text x="365" y="246" fill="#a7f3d0">A3(IR-R)</text>
+    </g>
+
+    <text x="220" y="295" text-anchor="middle" font-size="10" font-weight="600" fill="#0f172a">Common Logic Ground &amp; Regulated 5V Rail Integration</text>
+    <text x="220" y="312" text-anchor="middle" font-size="8.5" fill="#64748b">Firmware Loop Cycle Time: ~15ms</text>
+  </g>
+
+  <!-- 5. ULTRASONIC & IR SENSORS (Bottom-Left) -->
+  <g transform="translate(40, 410)">
+    <!-- HC-SR04 -->
+    <rect width="220" height="135" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5" filter="url(#shd7)"/>
+    <rect width="220" height="24" rx="8" fill="#059669"/>
+    <text x="110" y="17" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">HC-SR04 ULTRASONIC</text>
+    <text x="15" y="48" font-size="9.5" fill="#dc2626">VCC: 5V Rail | GND: Ground</text>
+    <text x="15" y="68" font-size="9.5" font-weight="600" fill="#0f172a">TRIG ──► Arduino Pin A0</text>
+    <text x="15" y="88" font-size="9.5" font-weight="600" fill="#0f172a">ECHO ──► Arduino Pin A1</text>
+    <text x="110" y="118" text-anchor="middle" font-size="8.5" fill="#059669">Obstacle Avoidance (&lt; 20 cm)</text>
+  </g>
+
+  <g transform="translate(40, 565)">
+    <!-- Dual IR Sensors -->
+    <rect width="220" height="135" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5" filter="url(#shd7)"/>
+    <rect width="220" height="24" rx="8" fill="#059669"/>
+    <text x="110" y="17" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">DUAL TCRT5000 IR TRACKERS</text>
+    <text x="15" y="48" font-size="9.5" fill="#dc2626">VCC: 5V Rail | GND: Ground</text>
+    <text x="15" y="68" font-size="9.5" font-weight="600" fill="#0f172a">Left Sensor ──► Arduino Pin A2</text>
+    <text x="15" y="88" font-size="9.5" font-weight="600" fill="#0f172a">Right Sensor ──► Arduino Pin A3</text>
+    <text x="110" y="118" text-anchor="middle" font-size="8.5" fill="#059669">0 = White Surface, 1 = Black Line</text>
+  </g>
+
+  <!-- 6. HC-05 BLUETOOTH & VOLTAGE DIVIDER (Bottom-Right) -->
+  <g transform="translate(820, 290)">
+    <rect width="240" height="230" rx="8" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#shd7)"/>
+    <rect width="240" height="26" rx="8" fill="#0284c7"/>
+    <text x="120" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">HC-05 BLUETOOTH MODULE</text>
+
+    <text x="15" y="52" font-size="9.5" fill="#dc2626">VCC: 5V Rail | GND: Ground</text>
+    <text x="15" y="74" font-size="9.5" font-weight="600" fill="#0f172a">TXD ──► Arduino Pin 2 (Direct)</text>
+    
+    <!-- Voltage Divider Detail -->
+    <rect x="15" y="88" width="210" height="65" rx="5" fill="#f0f9ff" stroke="#bae6fd"/>
+    <text x="105" y="105" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0369a1">Arduino Pin 3 ──► R1 (1kΩ)</text>
+    <text x="105" y="122" text-anchor="middle" font-size="8.5" fill="#0369a1">Tap ──► HC-05 RXD (3.3V)</text>
+    <text x="105" y="138" text-anchor="middle" font-size="8" fill="#64748b">R2 (2kΩ) to GND (Overvoltage Protect)</text>
+
+    <text x="120" y="185" text-anchor="middle" font-size="9" font-weight="600" fill="#0f172a">Smartphone Teleoperation</text>
+    <text x="120" y="202" text-anchor="middle" font-size="8.5" fill="#64748b">Commands: 'F','B','L','R','S','1','2','3'</text>
+    <text x="120" y="218" text-anchor="middle" font-size="8.5" fill="#0284c7">Baud: 9600 bps</text>
+  </g>
+
+  <!-- WIRING BUSES -->
+  <!-- Battery +7.4V to L298N VMS -->
+  <path d="M 85, 215 L 85, 245 L 340, 245 L 340, 185" fill="none" stroke="#dc2626" stroke-width="3"/>
+  <text x="210" y="238" font-size="9.5" font-weight="700" fill="#dc2626">7.4V Motor Power</text>
+
+  <!-- L298N OUT1/OUT2 to Left Motors -->
+  <path d="M 320, 160 L 260, 160 L 260, 310" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- L298N OUT3/OUT4 to Right Motors -->
+  <path d="M 760, 160 L 820, 160" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- L298N Logic Pins to Arduino Digital Pins -->
+  <path d="M 500, 185 L 500, 418" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="510" y="340" font-size="9" font-weight="700" fill="#ea580c">PWM &amp; DIR Bus (D5, D6, D7, D8, D9, D10)</text>
+
+  <!-- Ultrasonic to Arduino A0/A1 -->
+  <path d="M 260, 480 L 320, 480 L 320, 600" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- IR to Arduino A2/A3 -->
+  <path d="M 260, 630 L 320, 630" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- HC-05 to Arduino D2/D3 -->
+  <path d="M 820, 360 L 760, 360 L 760, 420" fill="none" stroke="#0284c7" stroke-width="2"/>
+
+  <!-- Ground & 5V Legend at bottom right -->
+  <g transform="translate(820, 540)">
+    <rect width="240" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shd7)"/>
+    <text x="120" y="24" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0f172a">WIRING COLOR CODE</text>
+    
+    <g transform="translate(20, 40)">
+      <line x1="0" y1="12" x2="30" y2="12" stroke="#dc2626" stroke-width="3"/>
+      <text x="40" y="16" font-size="9.5" fill="#334155">Red: +7.4V Battery / +5V VCC</text>
+
+      <line x1="0" y1="36" x2="30" y2="36" stroke="#0f172a" stroke-width="3"/>
+      <text x="40" y="40" font-size="9.5" fill="#334155">Black: Common Ground (GND)</text>
+
+      <line x1="0" y1="60" x2="30" y2="60" stroke="#ea580c" stroke-width="3"/>
+      <text x="40" y="64" font-size="9.5" fill="#334155">Orange: Motor PWM &amp; DIR Logic</text>
+
+      <line x1="0" y1="84" x2="30" y2="84" stroke="#059669" stroke-width="3"/>
+      <text x="40" y="88" font-size="9.5" fill="#334155">Green: IR &amp; Ultrasonic Sensors</text>
+
+      <line x1="0" y1="108" x2="30" y2="108" stroke="#0284c7" stroke-width="3"/>
+      <text x="40" y="112" font-size="9.5" fill="#334155">Blue: HC-05 Bluetooth UART</text>
+    </g>
+  </g>
+</svg>

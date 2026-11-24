@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 650" width="100%" height="100%" style="background:#ffffff; font-family:'Inter', system-ui, sans-serif;">
+  <defs>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="arduino-pcb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e7490"/>
+      <stop offset="50%" stop-color="#0891b2"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4">
+      <circle cx="5" cy="5" r="4" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <!-- Frame & Heading -->
+  <rect x="15" y="15" width="920" height="620" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="475" y="48" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">ARDUINO UNO PIN INTERFACE SCHEMATIC</text>
+  <text x="475" y="70" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">HARDWARE PIN CONNECTIONS &amp; SIGNAL MAPPING</text>
+
+  <!-- ARDUINO UNO BOARD GRAPHIC (Center) -->
+  <g transform="translate(325, 100)">
+    <!-- Board PCB -->
+    <rect width="300" height="480" rx="14" fill="url(#arduino-pcb)" stroke="#155e75" stroke-width="3" filter="url(#shadow2)"/>
+    
+    <!-- USB Type-B Port -->
+    <rect x="20" y="-12" width="55" height="45" rx="3" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+    <rect x="30" y="0" width="35" height="25" rx="2" fill="#334155"/>
+    <text x="47" y="16" text-anchor="middle" font-size="7.5" fill="#ffffff" font-weight="600">USB</text>
+
+    <!-- DC Barrel Jack -->
+    <rect x="220" y="-14" width="60" height="50" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="250" cy="12" r="10" fill="#64748b"/>
+    <circle cx="250" cy="12" r="4" fill="#0f172a"/>
+
+    <!-- ATmega328P DIP IC Socket -->
+    <rect x="100" y="240" width="100" height="190" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+    <text x="150" y="340" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" transform="rotate(-90 150 340)">ATmega328P-PU</text>
+    <circle cx="150" cy="252" r="4" fill="#334155"/>
+
+    <!-- Crystal Oscillator 16MHz -->
+    <rect x="135" y="195" width="30" height="16" rx="3" fill="#cbd5e1" stroke="#94a3b8"/>
+    <text x="150" y="206" text-anchor="middle" font-size="7" font-weight="600" fill="#334155">16MHz</text>
+
+    <!-- Reset Button -->
+    <rect x="30" y="55" width="22" height="22" rx="3" fill="#dc2626" stroke="#991b1b"/>
+    <text x="41" y="69" text-anchor="middle" font-size="7" font-weight="700" fill="#ffffff">RST</text>
+
+    <!-- UNO Text -->
+    <text x="150" y="125" text-anchor="middle" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="1">UNO</text>
+    <text x="150" y="145" text-anchor="middle" font-size="11" font-weight="600" fill="#cffafe">ARDUINO EMBEDDED</text>
+
+    <!-- Digital Header (Left Edge) -->
+    <rect x="6" y="120" width="22" height="340" rx="3" fill="#1e293b"/>
+    <text x="17" y="112" text-anchor="middle" font-size="8" font-weight="700" fill="#ffffff">DIGITAL</text>
+    <!-- Pin Dots & Labels Left (D0 to D13) -->
+    <g font-size="8.5" fill="#e2e8f0" font-family="'JetBrains Mono', monospace">
+      <text x="35" y="138">D0 (RX)</text>
+      <text x="35" y="162">D1 (TX)</text>
+      <text x="35" y="186">D2 (BT RX)</text>
+      <text x="35" y="210">D3~ (BT TX)</text>
+      <text x="35" y="234">D4</text>
+      <text x="35" y="258">D5~ (ENA)</text>
+      <text x="35" y="282">D6~ (IN1)</text>
+      <text x="35" y="306">D7 (IN2)</text>
+      <text x="35" y="330">D8 (IN3)</text>
+      <text x="35" y="354">D9~ (IN4)</text>
+      <text x="35" y="378">D10~ (ENB)</text>
+      <text x="35" y="402">D11~ (MOSI)</text>
+      <text x="35" y="426">D12 (MISO)</text>
+      <text x="35" y="450">D13 (SCK)</text>
+    </g>
+
+    <!-- Power & Analog Header (Right Edge) -->
+    <rect x="272" y="140" width="22" height="320" rx="3" fill="#1e293b"/>
+    <text x="283" y="132" text-anchor="middle" font-size="8" font-weight="700" fill="#ffffff">POWER / ANALOG</text>
+    <g font-size="8.5" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" text-anchor="end">
+      <text x="265" y="158">VIN</text>
+      <text x="265" y="182">GND</text>
+      <text x="265" y="206">GND</text>
+      <text x="265" y="230">5V OUT</text>
+      <text x="265" y="254">3.3V</text>
+      <text x="265" y="278">RESET</text>
+      <text x="265" y="320">A0 (TRIG)</text>
+      <text x="265" y="344">A1 (ECHO)</text>
+      <text x="265" y="368">A2 (IR-L)</text>
+      <text x="265" y="392">A3 (IR-R)</text>
+      <text x="265" y="416">A4 (SDA)</text>
+      <text x="265" y="440">A5 (SCL)</text>
+    </g>
+  </g>
+
+  <!-- LEFT CONNECTOR BLOCKS -->
+  <!-- 1. Bluetooth Module Connections -->
+  <g transform="translate(40, 150)">
+    <rect width="210" height="90" rx="8" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#shadow2)"/>
+    <rect width="210" height="24" rx="8" fill="#0284c7"/>
+    <text x="105" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">HC-05 BLUETOOTH</text>
+    <text x="15" y="45" font-size="10.5" fill="#0f172a">TX Pin ──► Arduino Pin 2 (RX)</text>
+    <text x="15" y="65" font-size="10.5" fill="#0f172a">RX Pin ◄── Arduino Pin 3 (TX)*</text>
+    <text x="15" y="80" font-size="9" fill="#0284c7">*Through 1kΩ/2kΩ Voltage Divider</text>
+  </g>
+  <path d="M 250, 195 L 325, 286" fill="none" stroke="#0284c7" stroke-width="2"/>
+  <path d="M 250, 215 L 325, 310" fill="none" stroke="#0284c7" stroke-width="2"/>
+
+  <!-- 2. L298N Motor Driver Connections -->
+  <g transform="translate(40, 270)">
+    <rect width="210" height="240" rx="8" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shadow2)"/>
+    <rect width="210" height="26" rx="8" fill="#ea580c"/>
+    <text x="105" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">L298N MOTOR DRIVER</text>
+
+    <text x="15" y="52" font-size="10" font-weight="600" fill="#c2410c">Speed PWM Controls:</text>
+    <text x="15" y="70" font-size="10" fill="#0f172a">ENA ◄── D5 (Left Speed PWM)</text>
+    <text x="15" y="90" font-size="10" fill="#0f172a">ENB ◄── D10 (Right Speed PWM)</text>
+
+    <text x="15" y="118" font-size="10" font-weight="600" fill="#c2410c">Direction Logic Controls:</text>
+    <text x="15" y="136" font-size="10" fill="#0f172a">IN1 ◄── D6 (Left Forward)</text>
+    <text x="15" y="156" font-size="10" fill="#0f172a">IN2 ◄── D7 (Left Backward)</text>
+    <text x="15" y="176" font-size="10" fill="#0f172a">IN3 ◄── D8 (Right Forward)</text>
+    <text x="15" y="196" font-size="10" fill="#0f172a">IN4 ◄── D9 (Right Backward)</text>
+    <text x="15" y="222" font-size="9" fill="#64748b">Skid-Steering Logic Protocol</text>
+  </g>
+  <!-- Traces from L298N to Arduino Left -->
+  <path d="M 250, 340 L 325, 358" fill="none" stroke="#ea580c" stroke-width="2"/>
+  <path d="M 250, 360 L 325, 478" fill="none" stroke="#ea580c" stroke-width="2"/>
+  <path d="M 250, 405 L 325, 382" fill="none" stroke="#ea580c" stroke-width="2"/>
+  <path d="M 250, 425 L 325, 406" fill="none" stroke="#ea580c" stroke-width="2"/>
+  <path d="M 250, 445 L 325, 430" fill="none" stroke="#ea580c" stroke-width="2"/>
+  <path d="M 250, 465 L 325, 454" fill="none" stroke="#ea580c" stroke-width="2"/>
+
+  <!-- RIGHT CONNECTOR BLOCKS -->
+  <!-- 3. Power Distribution Rail -->
+  <g transform="translate(690, 140)">
+    <rect width="220" height="110" rx="8" fill="#ffffff" stroke="#fecaca" stroke-width="1.5" filter="url(#shadow2)"/>
+    <rect width="220" height="24" rx="8" fill="#dc2626"/>
+    <text x="110" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">POWER DISTRIBUTION</text>
+    <text x="15" y="46" font-size="10.5" fill="#dc2626">5V Rail ◄── Regulated 5V In</text>
+    <text x="15" y="66" font-size="10.5" fill="#0f172a">GND Rail ◄── Common Ground</text>
+    <text x="15" y="86" font-size="10" fill="#64748b">Shared bus between Battery,</text>
+    <text x="15" y="100" font-size="10" fill="#64748b">L298N, Arduino and Sensors</text>
+  </g>
+  <path d="M 690, 186 L 625, 330" fill="none" stroke="#dc2626" stroke-width="2"/>
+  <path d="M 690, 206 L 625, 282" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- 4. HC-SR04 Ultrasonic Sensor -->
+  <g transform="translate(690, 280)">
+    <rect width="220" height="110" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5" filter="url(#shadow2)"/>
+    <rect width="220" height="24" rx="8" fill="#059669"/>
+    <text x="110" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">HC-SR04 ULTRASONIC</text>
+    <text x="15" y="48" font-size="10.5" fill="#0f172a">TRIG ◄── Arduino Pin A0 (Pulse)</text>
+    <text x="15" y="68" font-size="10.5" fill="#0f172a">ECHO ──► Arduino Pin A1 (Echo)</text>
+    <text x="15" y="88" font-size="9.5" fill="#64748b">VCC: 5V Rail | GND: Common</text>
+    <text x="15" y="102" font-size="9" fill="#059669">40kHz Sonic Pulse / ToF Detection</text>
+  </g>
+  <path d="M 690, 328 L 625, 420" fill="none" stroke="#059669" stroke-width="2"/>
+  <path d="M 690, 348 L 625, 444" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- 5. Dual TCRT5000 IR Sensors -->
+  <g transform="translate(690, 420)">
+    <rect width="220" height="120" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5" filter="url(#shadow2)"/>
+    <rect width="220" height="24" rx="8" fill="#059669"/>
+    <text x="110" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">DUAL TCRT5000 IR SENSORS</text>
+    <text x="15" y="48" font-size="10.5" fill="#0f172a">Left Sensor ──► Pin A2 (Digital)</text>
+    <text x="15" y="68" font-size="10.5" fill="#0f172a">Right Sensor ──► Pin A3 (Digital)</text>
+    <text x="15" y="88" font-size="9.5" fill="#64748b">VCC: 5V Rail | GND: Common</text>
+    <text x="15" y="105" font-size="9" fill="#059669">0 = White Surface, 1 = Black Line</text>
+  </g>
+  <path d="M 690, 468 L 625, 468" fill="none" stroke="#059669" stroke-width="2"/>
+  <path d="M 690, 488 L 625, 492" fill="none" stroke="#059669" stroke-width="2"/>
+
+  <!-- Pinout Summary Badge at bottom -->
+  <g transform="translate(260, 590)">
+    <rect width="430" height="32" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="215" y="21" text-anchor="middle" font-size="10.5" font-weight="600" fill="#334155">
+      Total Used: 6 Digital (PWM &amp; DIR) + 2 SoftwareSerial + 4 Analog/Digital Sensors
+    </text>
+  </g>
+</svg>

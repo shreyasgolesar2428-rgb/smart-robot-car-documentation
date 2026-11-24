@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 950" width="100%" height="100%" style="background:#ffffff; font-family:'Inter', system-ui, sans-serif;">
+  <defs>
+    <filter id="shd8" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.1"/>
+    </filter>
+    <marker id="fl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb" />
+    </marker>
+    <marker id="fl-arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    <marker id="fl-arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a" />
+    </marker>
+  </defs>
+
+  <!-- Frame -->
+  <rect x="15" y="15" width="970" height="920" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="500" y="46" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">SYSTEM WORKING FLOWCHART &amp; EXECUTIVE LOGIC</text>
+  <text x="500" y="68" text-anchor="middle" font-size="12" font-weight="500" fill="#64748b">MULTI-MODE STATE MACHINE, SENSOR ACQUISITION &amp; MOTOR CONTROL PIPELINE</text>
+
+  <!-- 1. START TERMINATOR -->
+  <g transform="translate(400, 85)">
+    <rect width="200" height="38" rx="19" fill="#1e293b" filter="url(#shd8)"/>
+    <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">SYSTEM POWER ON</text>
+  </g>
+  <line x1="500" y1="123" x2="500" y2="145" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+
+  <!-- 2. SETUP & INITIALIZATION -->
+  <g transform="translate(350, 145)">
+    <rect width="300" height="52" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" filter="url(#shd8)"/>
+    <text x="150" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">HARDWARE INITIALIZATION (setup)</text>
+    <text x="150" y="38" text-anchor="middle" font-size="9" fill="#64748b">Serial &amp; BT (9600 Baud) | PinModes (PWM/DIR/Sensors) | stopMotors()</text>
+  </g>
+  <line x1="500" y1="197" x2="500" y2="220" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+
+  <!-- 3. BLUETOOTH CHECK DECISION -->
+  <g transform="translate(380, 220)">
+    <polygon points="120,0 240,36 120,72 0,36" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" filter="url(#shd8)"/>
+    <text x="120" y="33" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1e40af">Bluetooth Data</text>
+    <text x="120" y="47" text-anchor="middle" font-size="9.5" fill="#1d4ed8">Available?</text>
+  </g>
+
+  <!-- BT Yes branch (Right) -->
+  <line x1="620" y1="256" x2="740" y2="256" stroke="#16a34a" stroke-width="2" marker-end="url(#fl-arrow-green)"/>
+  <text x="660" y="248" font-size="10" font-weight="700" fill="#16a34a">YES</text>
+
+  <!-- Parse BT Command -->
+  <g transform="translate(740, 230)">
+    <rect width="210" height="52" rx="6" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#shd8)"/>
+    <text x="105" y="22" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0369a1">Read Command Character</text>
+    <text x="105" y="38" text-anchor="middle" font-size="8.5" fill="#64748b">'1'=Line, '2'=Obstacle, '3'=BT, '0'=Idle</text>
+  </g>
+  <path d="M 845, 282 L 845, 335 L 560, 335" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+
+  <!-- BT No branch (Down) -->
+  <line x1="500" y1="292" x2="500" y2="350" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <text x="510" y="315" font-size="10" font-weight="700" fill="#64748b">NO</text>
+
+  <!-- 4. MODE SWITCH SELECTOR -->
+  <g transform="translate(360, 350)">
+    <rect width="280" height="42" rx="6" fill="#1e293b" filter="url(#shd8)"/>
+    <text x="140" y="26" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">EVALUATE ACTIVE OPERATING MODE</text>
+  </g>
+
+  <!-- Three-Way Fan-out Arrows -->
+  <!-- Left: Mode 1 (Line Following) -->
+  <path d="M 400, 392 L 400, 425 L 180, 425 L 180, 450" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <text x="260" y="418" font-size="10" font-weight="700" fill="#2563eb">MODE 1: Line Following</text>
+
+  <!-- Center: Mode 2 (Obstacle Avoiding) -->
+  <line x1="500" y1="392" x2="500" y2="450" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <text x="505" y="435" font-size="10" font-weight="700" fill="#2563eb">MODE 2: Obstacle</text>
+
+  <!-- Right: Mode 3 (Bluetooth Control) -->
+  <path d="M 600, 392 L 600, 425 L 820, 425 L 820, 450" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <text x="680" y="418" font-size="10" font-weight="700" fill="#2563eb">MODE 3: Bluetooth</text>
+
+  <!-- ==================== COLUMN 1: MODE 1 (LINE FOLLOWING) ==================== -->
+  <g transform="translate(45, 450)">
+    <!-- Read Sensors -->
+    <rect width="270" height="40" rx="6" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5" filter="url(#shd8)"/>
+    <text x="135" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#047857">Read Dual IR Sensors (A2, A3)</text>
+
+    <!-- Line Decision Diamond -->
+    <g transform="translate(35, 60)">
+      <polygon points="100,0 200,35 100,70 0,35" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="100" y="32" text-anchor="middle" font-size="9.5" font-weight="700" fill="#14532d">Evaluate IR Pattern</text>
+      <text x="100" y="45" text-anchor="middle" font-size="8.5" fill="#166534">(00, 10, 01, 11)</text>
+    </g>
+
+    <!-- Branch outcomes -->
+    <g transform="translate(0, 150)">
+      <!-- 00 Forward -->
+      <rect x="0" y="0" width="130" height="38" rx="4" fill="#ffffff" stroke="#93c5fd"/>
+      <text x="65" y="16" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1e40af">Left=0, Right=0</text>
+      <text x="65" y="30" text-anchor="middle" font-size="8.5" fill="#2563eb">Move Forward</text>
+
+      <!-- 10 Steer Left -->
+      <rect x="140" y="0" width="130" height="38" rx="4" fill="#ffffff" stroke="#fed7aa"/>
+      <text x="205" y="16" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c2410c">Left=1, Right=0</text>
+      <text x="205" y="30" text-anchor="middle" font-size="8.5" fill="#ea580c">Steer Hard Left</text>
+
+      <!-- 01 Steer Right -->
+      <rect x="0" y="50" width="130" height="38" rx="4" fill="#ffffff" stroke="#fed7aa"/>
+      <text x="65" y="66" text-anchor="middle" font-size="8.5" font-weight="700" fill="#c2410c">Left=0, Right=1</text>
+      <text x="65" y="80" text-anchor="middle" font-size="8.5" fill="#ea580c">Steer Hard Right</text>
+
+      <!-- 11 Stop -->
+      <rect x="140" y="50" width="130" height="38" rx="4" fill="#ffffff" stroke="#fecaca"/>
+      <text x="205" y="66" text-anchor="middle" font-size="8.5" font-weight="700" fill="#991b1b">Left=1, Right=1</text>
+      <text x="205" y="80" text-anchor="middle" font-size="8.5" fill="#dc2626">Stop / Intersection</text>
+    </g>
+  </g>
+  <line x1="180" y1="490" x2="180" y2="510" stroke="#2563eb" stroke-width="1.5" marker-end="url(#fl-arrow)"/>
+  <line x1="180" y1="580" x2="180" y2="600" stroke="#2563eb" stroke-width="1.5" marker-end="url(#fl-arrow)"/>
+
+  <!-- ==================== COLUMN 2: MODE 2 (OBSTACLE AVOIDING) ==================== -->
+  <g transform="translate(365, 450)">
+    <!-- Send Trig & Measure Echo -->
+    <rect width="270" height="40" rx="6" fill="#ffffff" stroke="#bae6fd" stroke-width="1.5" filter="url(#shd8)"/>
+    <text x="135" y="18" text-anchor="middle" font-size="10" font-weight="700" fill="#0369a1">Trigger HC-SR04 Pulse (10µs)</text>
+    <text x="135" y="32" text-anchor="middle" font-size="8.5" fill="#64748b">Compute: Dist = (Echo_µs × 0.034) / 2</text>
+
+    <!-- Distance Decision Diamond -->
+    <g transform="translate(35, 60)">
+      <polygon points="100,0 200,35 100,70 0,35" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="100" y="32" text-anchor="middle" font-size="10" font-weight="700" fill="#991b1b">Distance &gt; 20 cm?</text>
+      <text x="100" y="46" text-anchor="middle" font-size="8.5" fill="#b91c1c">(Safe Clearance)</text>
+    </g>
+
+    <!-- Safe Path (Yes) -->
+    <g transform="translate(0, 150)">
+      <rect width="130" height="42" rx="4" fill="#ffffff" stroke="#a7f3d0"/>
+      <text x="65" y="18" text-anchor="middle" font-size="9" font-weight="700" fill="#059669">Path Clear (YES)</text>
+      <text x="65" y="32" text-anchor="middle" font-size="8.5" fill="#334155">Move Forward (160)</text>
+    </g>
+
+    <!-- Obstacle Maneuver (No) -->
+    <g transform="translate(140, 150)">
+      <rect width="130" height="85" rx="4" fill="#ffffff" stroke="#fecaca"/>
+      <text x="65" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#b91c1c">Obstacle! (NO)</text>
+      <text x="65" y="32" font-size="8" fill="#334155">1. Stop Motors</text>
+      <text x="65" y="48" font-size="8" fill="#334155">2. Reverse (300ms)</text>
+      <text x="65" y="64" font-size="8" fill="#334155">3. Pivot Right (450ms)</text>
+      <text x="65" y="78" font-size="8" font-weight="600" fill="#ea580c">4. Re-scan Path</text>
+    </g>
+  </g>
+  <line x1="500" y1="490" x2="500" y2="510" stroke="#2563eb" stroke-width="1.5" marker-end="url(#fl-arrow)"/>
+  <line x1="500" y1="580" x2="500" y2="600" stroke="#2563eb" stroke-width="1.5" marker-end="url(#fl-arrow)"/>
+
+  <!-- ==================== COLUMN 3: MODE 3 (BLUETOOTH CONTROL) ==================== -->
+  <g transform="translate(685, 450)">
+    <!-- Check Command -->
+    <rect width="270" height="40" rx="6" fill="#ffffff" stroke="#fed7aa" stroke-width="1.5" filter="url(#shd8)"/>
+    <text x="135" y="24" text-anchor="middle" font-size="10" font-weight="700" fill="#c2410c">Execute btCommand ('F','B','L','R','S')</text>
+
+    <!-- Command Actions Grid -->
+    <g transform="translate(0, 60)">
+      <rect width="270" height="175" rx="6" fill="#ffffff" stroke="#cbd5e1" filter="url(#shd8)"/>
+      <text x="135" y="22" text-anchor="middle" font-size="10" font-weight="700" fill="#0f172a">TELEOPERATION DRIVER</text>
+      
+      <g font-size="9" font-family="'JetBrains Mono', monospace" fill="#334155" transform="translate(20, 36)">
+        <text x="0" y="16" font-weight="700" fill="#2563eb">'F' ──►</text> <text x="50" y="16">Forward (PWM 160)</text>
+        <text x="0" y="38" font-weight="700" fill="#2563eb">'B' ──►</text> <text x="50" y="38">Backward (PWM 160)</text>
+        <text x="0" y="60" font-weight="700" fill="#ea580c">'L' ──►</text> <text x="50" y="60">Turn Left (PWM 180)</text>
+        <text x="0" y="82" font-weight="700" fill="#ea580c">'R' ──►</text> <text x="50" y="82">Turn Right (PWM 180)</text>
+        <text x="0" y="104" font-weight="700" fill="#dc2626">'S' ──►</text> <text x="50" y="104">Full Stop (PWM 0)</text>
+        <text x="0" y="126" font-weight="700" fill="#64748b">'0' ──►</text> <text x="50" y="126">Idle / Standby</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ==================== CONVERGENCE & LOOP BACK ==================== -->
+  <g transform="translate(350, 770)">
+    <rect width="300" height="46" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#shd8)"/>
+    <text x="150" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#1e3a8a">UPDATE MOTOR DRIVER PINS (L298N)</text>
+    <text x="150" y="38" text-anchor="middle" font-size="9" fill="#64748b">Write analogWrite(ENA, ENB) &amp; digitalWrite(IN1..IN4)</text>
+  </g>
+
+  <!-- Feed paths from column 1, 2, 3 into convergence box -->
+  <path d="M 180, 690 L 180, 740 L 450, 740 L 450, 770" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <line x1="500" y1="735" x2="500" y2="770" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+  <path d="M 820, 690 L 820, 740 L 550, 740 L 550, 770" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#fl-arrow)"/>
+
+  <!-- Loop back to Bluetooth Check -->
+  <path d="M 350, 793 L 25, 793 L 25, 256 L 380, 256" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#fl-arrow)"/>
+  <text x="35" y="520" font-size="10.5" font-weight="700" fill="#2563eb" transform="rotate(-90 35 520)">CONTINUOUS EXECUTIVE RE-CYCLE (~15ms / loop)</text>
+
+  <!-- Flowchart Legend at bottom -->
+  <g transform="translate(260, 850)">
+    <rect width="480" height="42" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <circle cx="30" cy="21" r="6" fill="#1e293b"/>
+    <text x="45" y="25" font-size="9" fill="#334155">Terminator / State</text>
+
+    <rect x="150" y="13" width="16" height="16" rx="2" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="175" y="25" font-size="9" fill="#334155">Processing Step</text>
+
+    <polygon points="285,13 295,21 285,29 275,21" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="305" y="25" font-size="9" fill="#334155">Conditional Decision</text>
+  </g>
+</svg>
